@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 
+
 const data = {
     India: "New Delhi",
     Australia: "Canberra",
@@ -13,7 +14,7 @@ const CountryCapital = () => {
  return (
     <div className='App'>
     <h2>Country Capital Game</h2>
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleSubmit}></button>
     </div>
   );
 };

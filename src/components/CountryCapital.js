@@ -1,31 +1,288 @@
-import React from "react";
+import React, {useState} from "react";
 
-const data = {
-  "India": "New Delhi",
-  "Australia": "Canberra",
-  "France": "Paris",
-  "Italy": "Rome",
-  "Albania": "Tirane",
-  "Greece": "Athens",
-};
+const CountryCapital = ({data}) => {
+  const [entries, setEntries] = useState(() => {
+    return Object.entries(data).sort(() => Math.random() - 0.5);
+  });
 
-const CountryCapital = () => {
+  const [state, setState] = useState({
+    country: "",
+    capital: "",
+    correct: false,
+  });
+
+  const checkAnswer = (country, capital) => {
+    if (data[country] === capital) {
+      const filteredEntries = entries.filter(
+        ([c, cap]) => !(c === country && cap === capital)
+      );
+      setEntries(filteredEntries);
+      setState({ country: "", capital: "", correct: true });
+    } else {
+      setState({ country, capital, correct: false });
+    }
+  };
+
+
   return (
     <div className="countryCapital">
       <h1>Country to Capital Matching Game</h1>
-      <p>NB : You need to match a country to its capital by clicking on appropriate buttons</p>
+      <p>NB: You need to match a country to its capital by clicking on appropriate buttons</p>
 
-       <div className="buttonContainer">
-        {Object.entries(data).map(([country, capital]) => (
-          <button key={country}>{country}</button>
-        ))}
-        {Object.entries(data).map(([country, capital]) => (
-          <button key={capital}>{capital}</button>
-        ))}
-        
-       </div>
+      {entries.length > 0 ? (
+        <div className="buttonContainer">
+          {entries.map(([country, capital]) => (
+            <div key={country}>
+              <button
+                style={{
+                  backgroundColor: state.country === country ? "#0000ff" : "",
+                }}
+                onClick={() => checkAnswer(country, state.capital)}
+              >
+                {country}
+              </button>
+              <button
+                style={{
+                  backgroundColor: state.capital === capital ? "#0000ff" : "",
+                }}
+                onClick={() => checkAnswer(state.country, capital)}
+              >
+                {capital}
+              </button>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>Congratulations</p>
+      )}
     </div>
   );
 };
 
 export default CountryCapital;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState } from "react";
+
+// const CountryCapital = ({data}) => {
+//   const [clickedButton, setClickedButton] = useState(null);
+
+//   const handleButtonClick = (buttonText) => {
+//     setClickedButton(buttonText);
+//   };
+
+//   return (
+//     <div className="countryCapital">
+//       <h1>Country to Capital Matching Game</h1>
+//       <p>NB: You need to match a country to its capital by clicking on appropriate buttons</p>
+
+//       <div className="buttonContainer">
+//         {Object.entries(data).map(([country, capital]) => (
+//           <button
+//             key={country}
+//             className={clickedButton === country ? "clicked" : ""}
+//             onClick={() => handleButtonClick(country)}
+//           >
+//             {country}
+//           </button>
+//         ))}
+//         {Object.entries(data).map(([country, capital]) => (
+//           <button
+//             key={capital}
+//             className={clickedButton === capital ? "clicked" : ""}
+//             onClick={() => handleButtonClick(capital)}
+//           >
+//             {capital}
+//           </button>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default CountryCapital;

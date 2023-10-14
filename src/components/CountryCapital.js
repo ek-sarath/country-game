@@ -18,21 +18,19 @@ function CountryCapital ({data}) {
     const answer = e.target.value;
     if (!selectedAnswer){
         setSelectedAnswer(answer);
-        setColor ('blue');
+        // setColor ('blue');
     }else{
         if(data[setSelectedAnswer] === answer || data[answer] === selectedAnswer){
-            setButtonList(buttonList.filter(b=>b!==answer&&b!== selectedAnswer));
+            setButtonList(buttonList.filter(b => b !== answer && b !== selectedAnswer));
             setSelectedAnswer=(null);
             setPrevSelectedAnswer=(null);
-    }else{
+    } else {
         setPrevSelectedAnswer(selectedAnswer);
         setSelectedAnswer(answer);
-
-
-
-
-
-
+        setTimeout(() => {
+            setSelectedAnswer(null);
+            setPrevSelectedAnswer(null);
+        },1000);
       }
      }
    };
@@ -44,10 +42,10 @@ function CountryCapital ({data}) {
     return <>
     {
     buttonList.map((item) => { 
-    return <button key = {item} className={`game-btn ${selectedAnswer === item? "selected" : ""}
-    ${prevSelectedAnswer && (item === selectedAnswer || item === prevSelectedAnswer) ?"Incorrect" :""}`}
-    style={{backgroundColor: `${color}`}}
-    onClick={handleAnswer} value={item}>{item}</button>
+    return <button key = {item} className={
+        `game-btn ${selectedAnswer === item? "selected" : ""}
+                  ${prevSelectedAnswer && (item === selectedAnswer || item === prevSelectedAnswer) ?"Incorrect" :""}`} style={{backgroundColor: `${color}`}
+                  }onClick={handleAnswer} value={item}>{item}</button>
     })
  }
 </>;

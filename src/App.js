@@ -9,12 +9,11 @@ function App() {
     "Italy": "Rome",
     "Albania": "Tirane",
     "Greece": "Athens",
-  };
+    
+  }
 
   return (
-    <div className="App">
       <CountryCapital data={data} />
-    </div>
   );
 }
 

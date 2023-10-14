@@ -1,0 +1,16 @@
+.game-btn {
+    margin: 15px 5px;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    border: 1px solid #1a1a1a;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+  
+  button.selected {
+  background-color: #0000ff;
+}
+  
+button.incorrect {
+  background-color: #ff0000; 
+}

@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import './App.css';
 import CountryCapital from "./components/CountryCapital";
@@ -22,6 +20,3 @@ function App() {
 }
 
 export default App;
-
-
-

@@ -10,6 +10,10 @@ p {
   color: blueviolet;
 }
 
+h5 {
+  color: rgb(72, 94, 28);
+}
+
 .buttonContainer {
   display: flex;
   flex-wrap: nowrap;

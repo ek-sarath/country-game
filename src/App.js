@@ -9,7 +9,6 @@ function App() {
     "Italy": "Rome",
     "Albania": "Tirane",
     "Greece": "Athens",
-    
   }
 
   return (
